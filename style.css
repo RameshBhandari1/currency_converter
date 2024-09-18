@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+:root {
+    --white: #E0F7FA; /* Very light sky blue */
+    --blue: #B2EBF2;  /* Light sky blue */
+    --green: #004D40;     /* Navy sky blue */
+    --exchange-rate-color: #62038f; /* Ultra deep sky blue */
+    --input-background: #009688;     /* Teal (blue-green mix) */
+
+
+    --sky-blue-light: #80DEEA;    /* Sky blue light */
+    --sky-blue: #4DD0E1;          /* Standard sky blue */
+    --sky-blue-dark: #26C6DA;     /* Darker sky blue */
+    --sky-blue-darker: #00ACC1;   /* Even darker sky blue */
+    --sky-blue-darkest: #0097A7;  /* Very dark sky blue */
+    --sky-blue-deep: #00838F;     /* Deep sky blue */
+    
+    --sky-blue-cyan: #00BCD4;     /* Cyan (blue-green mix) */
+    --sky-blue-aqua: #00BFAE;     /* Aqua (blue-green mix) */
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+body {
+   display: grid;
+   place-items: center;
+   height: 100vh;
+   background: linear-gradient(136deg, var(--sky-blue-cyan), var(--sky-blue-aqua));
+}
+
+main {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 480px;
+    display: grid;
+    gap: 30px;
+    box-shadow: 0 0 5px var(--green), 0 5px 10px var(--sky-blue-aqua);
+    position: relative;
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    color: var(--green);
+}
+
+
+button {
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.controls {
+    display: grid;
+    gap: 20px;
+    position: relative;
+}
+
+.control {
+    display: flex;
+    background: var(--blue);
+    box-shadow: inset 0 0 3px var(--green);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.control button {
+    --image: url(https://placehold.co/30/teal/white?text=$);
+    font-weight: 600;
+    background: transparent;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control button::before {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: teal var(--image) center no-repeat;
+}
+
+.control button:hover {
+    color: var(--exchange-rate-color);
+}
+
+.control button::after {
+    font-family: "Material Symbols Outlined";
+    font-size: 1.5rem;
+    content: '\e5cf';
+
+}
+.control input {
+    font-size: 2.5rem;
+    text-align: end;
+    background: transparent;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+}
+
+.control input::-webkit-inner-spin-button,
+.control input::-webkit-outer-spin-button {
+    appearance: none;
+}
+
+.swap-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--sky-blue);
+    color: var(--green);
+    line-height: 1;
+    box-shadow: 0 3px 5px var(--sky-blue-dark);
+    position: absolute;
+    top: 50%;
+    inset-inline-start:  50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s;
+
+}
+
+.swap-btn:hover {
+    background: var(--green);
+    color: var(--white);
+}
+
+.swap-btn span {
+    rotate: 90deg;
+    transition: inherit;
+}
+
+.swap-btn:hover span{
+    rotate: 270deg;
+}
+
+.exchange-rate {
+    text-align: center;
+}
+
+.exchange-rate h5 {
+    text-transform: uppercase;
+    color: var(--green);
+}
+
+.exchange-rate span {
+    margin-top: 10px;
+    display: inline-block;
+    color: var(--exchange-rate-color);
+    font-weight: 500;
+}
+
+.exchange-rate span:empty {
+    min-width: 120px;
+    min-height: 1.5rem;
+}
+
+.drawer {
+    position: absolute;
+    inset: 0;
+    background: var(--blue);
+    padding: 20px;
+    display: grid;
+    align-content: start;
+    gap: 20px;
+    transform: translateY(100%);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer.show {
+    transform: none;
+}
+
+.title {
+    text-align: center;
+    position: relative;
+}
+
+.title button {
+    position: absolute;
+    top: 50%;
+    inset-inline-start: 0;
+    transform: translateY(-50%);
+    background: transparent;
+    opacity: 0.5;
+}
+
+.title button:hover {
+    opacity: 1;
+}
+
+.search input{
+    width: 100%;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: 1px solid var(--green);
+    border-radius: 10px;
+    outline-color: var(--exchange-rate-color);
+}
+
+.currency-list {
+    list-style-type: none;
+    overflow-y: auto;
+}
+
+.currency-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding-block: 5px;
+}
+
+.currency-list li:first-child {
+    padding-block-start: 0;
+}
+
+/* disable click events for non list item */
+.currency-list *:not(li) {
+    pointer-events: none;
+}
+
+.loader {
+    position: relative;
+}
+
+.loader::after {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    border-radius: 0.25rem;
+    background: var(--sky-blue-aqua);
+    content: "";
+    animation: loading 1s linear infinite alternate;
+}
+
+@keyframes loading {
+    from {background: var(--sky-blue-aqua)}
+    to {background: var(--sky-blue-deep)}
+}
+
