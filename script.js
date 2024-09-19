@@ -1,4 +1,5 @@
-const key = "fca_live_269ZaZt75PeSr8Q6eY4fMr5Mw2b3hNs4L5LzHwF1";
+const key = "your_api_key";
+
 const state = {
     openedDrawer: null,
     currencies: [],
