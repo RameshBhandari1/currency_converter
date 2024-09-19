@@ -1,5 +1,4 @@
-const key = "your_api_key";
-
+const key = "fca_live_269ZaZt75PeSr8Q6eY4fMr5Mw2b3hNs4L5LzHwF1";
 const state = {
     openedDrawer: null,
     currencies: [],
@@ -23,18 +22,18 @@ const ui = {
    exchangeRate: document.getElementById('exchange-rate'),
    baseInput: document.getElementById('base-input'),
    targetInput: document.getElementById('target-input'),
-   swapBtn: document.getElementById('swap-btn'),
+   swapBtn: document.getElementById('swap-btn')
 };
 
 // event listener
 const setupEventListeners = () => {
-    document.addEventListener('DOMContentLoaded', initApp)
+    document.addEventListener('DOMContentLoaded', initApp);
     ui.controls.addEventListener('click', showDrawer);
     ui.dismisBtn.addEventListener('click', hideDrawer);
     ui.searchInput.addEventListener('input', filterCurrency);
     ui.currencyList.addEventListener('click', selectPair);
     ui.baseInput.addEventListener('input', calculateRate);
-    ui.swapBtn.addEventListener('click', switchPair)
+    ui.swapBtn.addEventListener('click', switchPair);
 };
 
 // event handlers
